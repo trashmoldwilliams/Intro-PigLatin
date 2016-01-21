@@ -2,16 +2,17 @@ var pigLatin = function(englishWord) {
   var splitAt = hasVowelAt(englishWord);
   var qu = startsWithQU(englishWord);
   var isY = whereYAt(englishWord);
+  var QuIn = hasQUin(englishWord);
 
   if (qu === true) {
     return englishWord.slice(2) + englishWord.slice(0, 2) + 'ay';
+  } else if (QuIn === true) {
+    return englishWord.slice(3) + englishWord.slice(0, 3) + 'ay';
   } else if (isY > 0) {
     return englishWord.slice(isY) + englishWord.slice(0, isY) + 'ay';
   } else
     return englishWord.slice(splitAt) + englishWord.slice(0, splitAt) + 'ay';
   };
-
-
 
 var hasVowelAt = function(word) {
   var vowels = ['a', 'e', 'i', 'o', 'u']
@@ -28,7 +29,7 @@ var hasVowelAt = function(word) {
 var startsWithQU = function(word) {
   if (word.substring(0, 2) === "qu") {
   return true;
-}
+  }
 }
 
 var hasQUin = function(word) {
